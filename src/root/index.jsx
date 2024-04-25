@@ -1,30 +1,33 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Container } from "./style";
 import sidebar from "../utils/sidebar";
+import Sideber from "../components/Sidebar";
 
 const Root = () => {
   return (
     <Container>
       <Routes>
-        {sidebar.map((value) => {
-          if (value.children?.length) {
-            return value.children.map((child) => {
-              const ChildElement = child.element;
+        <Route element={<Sideber />}>
+          {sidebar.map((value) => {
+            if (value.children?.length) {
+              return value.children.map((child) => {
+                const ChildElement = child.element;
+                return (
+                  <Route
+                    key={child.id}
+                    path={child.path}
+                    element={<ChildElement />}
+                  />
+                );
+              });
+            } else {
+              const Element = value.element;
               return (
-                <Route
-                  key={child.id}
-                  path={child.path}
-                  element={<ChildElement />}
-                />
+                <Route key={value.id} path={value.path} element={<Element />} />
               );
-            });
-          } else {
-            const Element = value.element;
-            return (
-              <Route key={value.id} path={value.path} element={<Element />} />
-            );
-          }
-        })}
+            }
+          })}
+        </Route>
         <Route path="/" element={<Navigate to={"/analitika"} />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
