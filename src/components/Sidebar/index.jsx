@@ -1,7 +1,18 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { Body, Container, LogOut, Logo, Side, Wrapper } from "./style";
 import Navbar from "../Navbar";
 import Profile from "./profile";
+import sidebar from "../../utils/sidebar.js";
+import { Outlet, useNavigate } from "react-router-dom";
+import {
+  Body,
+  ChildWrapper,
+  Container,
+  LogOut,
+  Logo,
+  Menu,
+  MenuItem,
+  Side,
+  Wrapper,
+} from "./style";
 
 const Sideber = () => {
   const navigate = useNavigate();
@@ -16,7 +27,30 @@ const Sideber = () => {
       <Side>
         <Logo onClick={onClickLogo}>Webbrain.crm</Logo>
         <Profile />
-        <h3>Sidebar</h3>
+        <Menu>
+          {sidebar.map((value) => {
+            const { icon: Icon } = value;
+            return (
+              <>
+                <MenuItem key={value.id}>
+                  <MenuItem.Title>
+                    <Icon className="icon" />
+                    {value.title}
+                  </MenuItem.Title>
+                </MenuItem>
+                <ChildWrapper>
+                  {value?.children?.map((child) => {
+                    return (
+                      <MenuItem key={child?.id}>
+                        <MenuItem.Title>{child?.title}</MenuItem.Title>
+                      </MenuItem>
+                    );
+                  })}
+                </ChildWrapper>
+              </>
+            );
+          })}
+        </Menu>
         <LogOut onClick={onClickLogOut}>Chiqish</LogOut>
       </Side>
       <Body>

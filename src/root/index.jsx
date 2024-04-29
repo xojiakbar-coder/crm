@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Container } from "./style";
 import sidebar from "../utils/sidebar";
-import Sideber from "../components/Sidebar";
+import Sidebar from "../components/Sidebar";
 
 const Root = () => {
   return (
     <Container>
       <Routes>
-        <Route element={<Sideber />}>
+        <Route element={<Sidebar />}>
           {sidebar.map((value) => {
             if (value.children?.length) {
               return value.children.map((child) => {
