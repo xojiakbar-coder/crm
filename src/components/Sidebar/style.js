@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import arrow from "../../assets/icons/rightArrow.svg?react";
+import exitIcon from "../../assets/icons/exit.svg?react";
+import { NavLink } from "react-router-dom";
 
 const flex = css`
   display: flex;
@@ -8,7 +10,7 @@ const flex = css`
 const Arrow = styled(arrow)`
   ${flex}
   margin-left: auto;
-  transform: ${({ active }) => active && `rotate(91deg)`};
+  transform: ${({ active }) => active === "true" && `rotate(90deg)`};
   transition: all 100ms;
 `;
 
@@ -56,6 +58,9 @@ const Logo = styled.div`
 `;
 
 const LogOut = styled(Logo)`
+  ${flex}
+  align-items: center;
+  column-gap: 16px;
   bottom: 0;
   margin-top: auto;
   width: 100%;
@@ -65,7 +70,6 @@ const LogOut = styled(Logo)`
 `;
 
 // Profile
-
 const ProfileContainer = styled.div`
   ${flex}
   align-items: center;
@@ -107,14 +111,21 @@ const Menu = styled.div`
   flex-direction: column;
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled(NavLink)`
   ${flex}
   align-items: center;
+  text-decoration: none;
+  color: var(--backgroundColor);
   padding-right: 12px;
   &:hover {
     cursor: pointer;
     background-color: rgba(248, 250, 252, 1);
   }
+
+  background-color: ${({ active }) =>
+    active === "true" && `rgba(248, 250, 252, 1)`};
+  color: ${({ active }) =>
+    active === "true" ? `var(--activeColor)` : `var(--primaryColor)`};
 `;
 
 MenuItem.Title = styled.div`
@@ -132,17 +143,23 @@ MenuItem.Title = styled.div`
       fill: var(--activeColor);
     }
   }
+  & path {
+    fill: ${({ active }) => active === "true" && " var(--activeColor)"};
+  }
   .icon {
     margin-right: 16px;
   }
 `;
 
+const ExitIcon = styled(exitIcon)``;
+
 const ChildWrapper = styled.div`
   margin-left: 35px;
-  height: ${({ active }) => (active ? "auto" : "0px")};
+  height: ${({ active }) => (active === "true" ? "auto" : "0px")};
   overflow: hidden;
 `;
 
+// export styled
 export {
   Container,
   Side,
@@ -155,4 +172,5 @@ export {
   MenuItem,
   ChildWrapper,
   Arrow,
+  ExitIcon,
 };
