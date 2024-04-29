@@ -1,7 +1,15 @@
 import styled, { css } from "styled-components";
+import arrow from "../../assets/icons/rightArrow.svg?react";
 
 const flex = css`
   display: flex;
+`;
+
+const Arrow = styled(arrow)`
+  ${flex}
+  margin-left: auto;
+  transform: ${({ active }) => active && `rotate(91deg)`};
+  transition: all 100ms;
 `;
 
 const Container = styled.div`
@@ -13,7 +21,6 @@ const Body = styled.div`
 `;
 
 // Sidebar
-
 const Side = styled.div`
   ${flex}
   flex-direction: column;
@@ -22,7 +29,6 @@ const Side = styled.div`
   min-width: 280px;
   height: 100vh;
   background-color: white;
-  border: 2px solid red;
   overflow-x: hidden;
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -96,21 +102,19 @@ ProfileContainer.Email = styled.div`
 `;
 
 // Menu
-
 const Menu = styled.div`
   ${flex}
   flex-direction: column;
-  padding: 0 24px;
 `;
 
 const MenuItem = styled.div`
   ${flex}
   align-items: center;
+  padding-right: 12px;
   &:hover {
     cursor: pointer;
     background-color: rgba(248, 250, 252, 1);
   }
-  padding-right: 24px;
 `;
 
 MenuItem.Title = styled.div`
@@ -118,7 +122,7 @@ MenuItem.Title = styled.div`
   align-items: center;
   flex: 1;
   font-weight: 500;
-  size: 14px;
+  font-size: 14px;
   line-height: 20px;
   padding: 12px 0 12px 24px;
 
@@ -150,4 +154,5 @@ export {
   Menu,
   MenuItem,
   ChildWrapper,
+  Arrow,
 };

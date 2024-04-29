@@ -3,6 +3,7 @@ import Profile from "./profile";
 import sidebar from "../../utils/sidebar.js";
 import { Outlet, useNavigate } from "react-router-dom";
 import {
+  Arrow,
   Body,
   ChildWrapper,
   Container,
@@ -13,9 +14,21 @@ import {
   Side,
   Wrapper,
 } from "./style";
+import { useState } from "react";
 
-const Sideber = () => {
+const Sidebar = () => {
+  const [open, setOpen] = useState([3]);
   const navigate = useNavigate();
+
+  const onClickParent = (id) => {
+    if (open.includes(id)) {
+      let data = open.filter((val) => val !== id);
+      setOpen(data);
+    } else {
+      setOpen([...open, id]);
+    }
+  };
+
   const onClickLogo = () => {
     navigate("/");
   };
@@ -30,15 +43,20 @@ const Sideber = () => {
         <Menu>
           {sidebar.map((value) => {
             const { icon: Icon } = value;
+            const active = open.includes(value.id);
             return (
-              <>
-                <MenuItem key={value.id}>
+              <div key={value.id}>
+                <MenuItem
+                  key={value?.id}
+                  onClick={() => onClickParent(value.id)}
+                >
                   <MenuItem.Title>
                     <Icon className="icon" />
                     {value.title}
                   </MenuItem.Title>
+                  {value?.children?.length && <Arrow active={active} />}
                 </MenuItem>
-                <ChildWrapper>
+                <ChildWrapper active={active}>
                   {value?.children?.map((child) => {
                     return (
                       <MenuItem key={child?.id}>
@@ -47,7 +65,7 @@ const Sideber = () => {
                     );
                   })}
                 </ChildWrapper>
-              </>
+              </div>
             );
           })}
         </Menu>
@@ -63,4 +81,4 @@ const Sideber = () => {
   );
 };
 
-export default Sideber;
+export default Sidebar;
