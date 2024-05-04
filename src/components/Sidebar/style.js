@@ -123,7 +123,7 @@ const MenuItem = styled(NavLink)`
   }
 
   background-color: ${({ active }) =>
-    active === "true" && `rgba(248, 250, 252, 1)`};
+    active === "true" && `rgba(27, 89, 248, 0.1);`};
   color: ${({ active }) =>
     active === "true" ? `var(--activeColor)` : `var(--primaryColor)`};
 `;

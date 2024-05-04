@@ -23,11 +23,28 @@ const Root = () => {
             } else {
               const Element = value.element;
               return (
-                <Route key={value.id} path={value.path} element={<Element />} />
+                !value.hidden && (
+                  <Route
+                    key={value.id}
+                    path={value.path}
+                    element={<Element />}
+                  />
+                )
               );
             }
           })}
         </Route>
+
+        {sidebar.map((value) => {
+          const Element = value.element;
+          return (
+            value.hidden && (
+              <Route key={value.id} path={value.path} element={<Element />} />
+            )
+          );
+        })}
+
+        <Route path="/login" element={<h1>login</h1>} />
         <Route path="/" element={<Navigate to={"/analitika"} />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
