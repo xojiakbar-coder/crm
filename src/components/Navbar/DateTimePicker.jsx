@@ -17,7 +17,6 @@ const DateTimePicker = () => {
           views={["year", "month", "day"]}
           openTo="day"
           slotProps={{ textField: { size: "small" } }}
-          // renderInput={(params) => <TextField {...params} size="small" />}
         />
       </LocalizationProvider>
     </div>
