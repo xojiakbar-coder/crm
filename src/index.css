@@ -8,10 +8,10 @@
 }
 
 :root {
-  font-family: "Montserrat", sans-serif;
+  --font-family: "Montserrat", sans-serif;
   --backgroundColor: #253e5f;
   --activeColor: #1890ff;
-  --pirmaryColor: #929faf;
+  --primaryColor: rgba(146, 159, 175, 1);
 }
 
 body {
