@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Section, Timer } from "./style";
 
 const Time = () => {
@@ -39,7 +39,7 @@ const Time = () => {
       <Timer>
         {date.hour}:{date.minute}
       </Timer>
-      <Timer status="true">PM</Timer>
+      <Timer status="true">{date.status}</Timer>
     </Section>
   );
 };

@@ -1,15 +1,19 @@
+import GenericInput from "../Generic/Input";
 import DateTimePicker from "./DateTimePicker";
 import GenericSelect from "./Select";
 import Time from "./Time";
-import { Container, Input, InputWrapper, SearchIcon, Section } from "./style";
+import { Container, SearchIcon, Section } from "./style";
 
 const Navbar = () => {
   return (
     <Container>
-      <InputWrapper>
-        <SearchIcon />
-        <Input type="text" placeholder="Search" />
-      </InputWrapper>
+      <GenericInput
+        width={300}
+        height={40}
+        borderRadius={8}
+        iconleft={<SearchIcon />}
+        placeholder="Search"
+      />
       <Section>
         <Time />
         <DateTimePicker />
