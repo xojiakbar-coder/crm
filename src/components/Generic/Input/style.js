@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { getValue } from "../../../hooks";
+import { getValue } from "../../../hooks/getStyleValue";
 
 export const Container = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   width: ${({ width }) => getValue(width)};
   height: ${({ height }) => getValue(height)};
   max-width: ${({ width }) => getValue(width)};
-  border-radius: ${({ borderRadius }) => getValue(borderRadius)};
+  border-radius: ${({ radius }) => getValue(radius)};
 `;
 
 export const Input = styled.input`
@@ -21,7 +21,7 @@ export const Input = styled.input`
   font-size: ${({ fontSize }) => getValue(fontSize)};
   font-weight: ${({ fontWeight }) => getValue(fontWeight)};
   line-height: ${({ lineHeight }) => getValue(lineHeight)};
-  border-radius: ${({ borderRadius }) => getValue(borderRadius)};
+  border-radius: ${({ radius }) => getValue(radius)};
   color: ${({ color }) => (color ? color : "#bbc3cd")};
   &::placeholder {
     font-size: ${(placeholderStyle) => getValue(placeholderStyle?.fontSize)};

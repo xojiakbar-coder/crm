@@ -10,7 +10,7 @@ const Navbar = () => {
       <GenericInput
         width={300}
         height={40}
-        borderRadius={8}
+        radius={8}
         iconleft={<SearchIcon />}
         placeholder="Search"
       />

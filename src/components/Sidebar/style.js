@@ -20,6 +20,9 @@ const Container = styled.div`
 
 const Body = styled.div`
   flex: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
 `;
 
 // Sidebar
@@ -33,9 +36,6 @@ const Side = styled.div`
   background-color: white;
   overflow-x: hidden;
   overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -55,6 +55,7 @@ const Logo = styled.div`
   border-bottom: 1px solid rgba(222, 225, 227, 1);
   cursor: pointer;
   background-color: white;
+  z-index: 999;
 `;
 
 const LogOut = styled(Logo)`
